@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DAD</title>
+  </head>
+  <body>
+    <template id="fields">
+      <form>
+        <div class="form-control">
+          <label for="title">title</label>
+          <input id="title" type="text" />
+        </div>
+        <div class="form-control">
+          <label for="desc">description</label>
+          <input id="desc" type="text" />
+        </div>
+        <button class="btn">add project</button>
+      </form>
+    </template>
+
+    <template id="project-list">
+      <div class="projects">
+        <div class="title-header">
+          <h2 class="title"></h2>
+        </div>
+        <div class="projects-list"></div>
+      </div>
+    </template>
+
+    <div id="app"></div>
+  </body>
+</html>
