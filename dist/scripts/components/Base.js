@@ -4,14 +4,18 @@ export class Base {
         this._hostId = _hostId;
         this._elementId = _elementId;
         this._postionElementStatr = _postionElementStatr;
-        this._template = document.getElementById(this._templateId);
-        this._hostElement = document.getElementById(this._hostId);
-        const templateContent = document.importNode(this._template.content, true);
+        const [template, _] = this._targetElements(this._templateId, this._hostId);
+        const templateContent = document.importNode(template.content, true);
         this.element = templateContent.firstElementChild;
         if (this._elementId) {
             this.element.id = this._elementId;
             this._insertElement(this._postionElementStatr);
         }
+    }
+    _targetElements(templateId, hostId) {
+        this._template = document.getElementById(templateId);
+        this._hostElement = document.getElementById(hostId);
+        return [this._template, this._hostElement];
     }
     _insertElement(postionStart) {
         const isInsertStart = postionStart ? "afterbegin" : "beforeend";

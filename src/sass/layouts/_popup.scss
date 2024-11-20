@@ -1,0 +1,59 @@
+@use "../vars/colors" as *;
+@use "../vars/radius" as *;
+.popup_container {
+  position: fixed;
+  inset: 0;
+  background: $bg-second-c;
+  z-index: 99;
+  display: none;
+  place-items: center;
+  .popup {
+    min-width: 270px;
+    max-width: 300px;
+    border-radius: $medium-r;
+    background: rgb(157 152 152 / 18%);
+    backdrop-filter: blur(5px);
+    padding: 0px 20px 13px 20px;
+
+    box-shadow: 1px 5px 28px 0 #5d5d5d, -1px 3px 20px 0 #656565,
+      1px 0px 20px 0px #37353514;
+    .header {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #b1a8a88c;
+      color: $error-c;
+      height: 43px;
+      display: flex;
+      align-items: center;
+      h4 {
+        font-weight: 900;
+      }
+      .close {
+        border-width: 0;
+        background-color: initial;
+        cursor: pointer;
+        color: #ffffff;
+        font-size: 22px;
+        position: relative;
+        display: grid;
+        place-items: center;
+        &:hover {
+          color: $error-c;
+        }
+      }
+    }
+    .content {
+      padding: 14px 0px;
+      .desc_popup {
+        font-size: 14px;
+        width: 100%;
+        color: white;
+        line-height: 1.6;
+      }
+    }
+  }
+}
+
+.visible_popup {
+  display: grid !important;
+}
