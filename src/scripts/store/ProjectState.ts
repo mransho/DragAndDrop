@@ -1,9 +1,10 @@
 import { projectStatus } from "../utils/project-status.js";
+import { ListnerType } from "./ListnerType.js";
 import { ProjectRules } from "./ProjectRules.js";
 
 class ProjectState {
   private static _instance: ProjectState;
-  private _listners: Function[] = [];
+  private _listners: ListnerType[] = [];
   private _projects: ProjectRules[] = [];
   private _localStorageProjects: ProjectRules[] = localStorage.getItem(
     "projects"
@@ -32,12 +33,24 @@ class ProjectState {
     this._runListners();
     localStorage.setItem("projects", JSON.stringify(this._projects));
   }
+
+  public deleteProject(projectId: string): void {
+    const projectsAfterDelet = this._projects.filter(
+      (project: ProjectRules) => {
+        return project.id !== projectId;
+      }
+    );
+    this._projects = projectsAfterDelet;
+    this._runListners();
+    localStorage.setItem("projects", JSON.stringify(this._projects));
+  }
+
   private _runListners(): void {
     for (const listner of this._listners) {
       listner([...this._projects]);
     }
   }
-  public pushListner(Listner: Function) {
+  public pushListner(Listner: ListnerType) {
     this._listners.push(Listner);
   }
 }

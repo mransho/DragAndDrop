@@ -12,9 +12,10 @@ export class Fields extends Base<HTMLFormElement> {
   }
 
   private _addProject(): void {
-    this.element.addEventListener("submit", this._handleAddProject.bind(this));
+    this.element.addEventListener("submit", this._handleAddProject);
   }
 
+  @autoBind 
   private _handleAddProject(e: Event): void {
     e.preventDefault();
     const [titleInput, descInput] = this._targetInputs();

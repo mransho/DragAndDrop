@@ -7,10 +7,17 @@ export class projectsList extends Base {
         super("project-list", "app", `${_status}-projects`, false);
         this._status = _status;
         this.renderProjectList();
+        if (JSON.parse(localStorage.getItem("projects"))) {
+            const localStorageProjects = JSON.parse(localStorage.getItem("projects"));
+            this._showProjectInDom(localStorageProjects);
+        }
         projectState.pushListner((projects) => {
-            const filterProjects = this._filterProjectsStatus(projects);
-            this._renderProjects(filterProjects);
+            this._showProjectInDom(projects);
         });
+    }
+    _showProjectInDom(projects) {
+        const filterProjects = this._filterProjectsStatus(projects);
+        this._renderProjects(filterProjects);
     }
     renderProjectList() {
         const title = this.element.querySelector(".title");

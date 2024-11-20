@@ -1,0 +1,1 @@
+export function autoBind( target:any, methodName:string ,desc ){}
