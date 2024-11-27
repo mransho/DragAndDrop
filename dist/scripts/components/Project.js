@@ -12,6 +12,7 @@ export class Project extends Base {
         this._project = project;
         this._renderProject();
         this._deleteProject();
+        this._runDragging();
     }
     _renderProject() {
         const title = this.element.querySelector(".project_title");
@@ -21,15 +22,36 @@ export class Project extends Base {
     }
     _deleteProject() {
         const deletButton = this.element.querySelector(".delete");
-        deletButton.addEventListener("click", this._deleteHandler);
+        deletButton.addEventListener("click", this._handleDeleteProject);
     }
-    _deleteHandler() {
+    _handleDeleteProject() {
         if (confirm("Are you sure you want to delete?")) {
             projectState.deleteProject(this._project.id);
         }
+        return;
+    }
+    _runDragging() {
+        this.element.addEventListener("dragstart", this._handlDragStart);
+        this.element.addEventListener("dragend", this._handlDragEnd);
+    }
+    _handlDragStart(e) {
+        this.element.style.opacity = ".1";
+        e.dataTransfer.setData("text/plain", this._project.id);
+        e.dataTransfer.effectAllowed = "move";
+    }
+    _handlDragEnd() {
+        console.log("drag end");
+        this.element.style.opacity = "1";
     }
 }
 __decorate([
     autoBind
-], Project.prototype, "_deleteHandler", null);
+], Project.prototype, "_handleDeleteProject", null);
+__decorate([
+    autoBind
+], Project.prototype, "_handlDragStart", null);
+__decorate([
+    autoBind
+], Project.prototype, "_handlDragEnd", null);
+import { autoBind } from "../decreators/autoBind.js";
 //# sourceMappingURL=Project.js.map

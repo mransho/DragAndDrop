@@ -75,3 +75,4 @@ export class Fields extends Base<HTMLFormElement> {
     descInput.value = "";
   }
 }
+import { autoBind } from "../decreators/autoBind.js";

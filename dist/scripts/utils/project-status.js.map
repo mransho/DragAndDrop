@@ -1,1 +1,1 @@
-{"version":3,"file":"project-status.js","sourceRoot":"","sources":["../../../src/scripts/utils/project-status.ts"],"names":[],"mappings":"AAAA,MAAM,CAAN,IAAY,aAIX;AAJD,WAAY,aAAa;IACvB,qDAAM,CAAA;IACN,qDAAM,CAAA;IACN,yDAAQ,CAAA;AACV,CAAC,EAJW,aAAa,KAAb,aAAa,QAIxB"}
+{"version":3,"file":"project-status.js","sourceRoot":"","sources":["../../../src/scripts/utils/project-status.ts"],"names":[],"mappings":"AAAA,MAAM,CAAN,IAAY,aAIX;AAJD,WAAY,aAAa;IACvB,kCAAiB,CAAA;IACjB,kCAAiB,CAAA;IACjB,sCAAqB,CAAA;AACvB,CAAC,EAJW,aAAa,KAAb,aAAa,QAIxB"}

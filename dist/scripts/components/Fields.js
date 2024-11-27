@@ -60,4 +60,5 @@ export class Fields extends Base {
 __decorate([
     autoBind
 ], Fields.prototype, "_handleAddProject", null);
+import { autoBind } from "../decreators/autoBind.js";
 //# sourceMappingURL=Fields.js.map

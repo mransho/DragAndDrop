@@ -27,7 +27,7 @@ class ProjectState {
       Math.random().toString(),
       title,
       desc,
-      projectStatus.Intial
+      projectStatus.Inital
     );
     this._projects.push(newProject);
     this._runListners();
@@ -43,6 +43,19 @@ class ProjectState {
     this._projects = projectsAfterDelet;
     this._runListners();
     localStorage.setItem("projects", JSON.stringify(this._projects));
+  }
+
+  public changeProjectStatus(
+    projectId: string,
+    newStatus: projectStatus
+  ): void {
+    const project = this._projects.find((p) => p.id === projectId);
+    if (project && project.status !== newStatus) {
+      project!.status = newStatus;
+      this._runListners();
+      localStorage.setItem("projects", JSON.stringify(this._projects));
+      console.log("test")
+    }
   }
 
   private _runListners(): void {

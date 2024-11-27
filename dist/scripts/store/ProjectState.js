@@ -17,7 +17,7 @@ class ProjectState {
         return this._instance;
     }
     createProject(title, desc) {
-        const newProject = new ProjectRules(Math.random().toString(), title, desc, projectStatus.Intial);
+        const newProject = new ProjectRules(Math.random().toString(), title, desc, projectStatus.Inital);
         this._projects.push(newProject);
         this._runListners();
         localStorage.setItem("projects", JSON.stringify(this._projects));
@@ -29,6 +29,15 @@ class ProjectState {
         this._projects = projectsAfterDelet;
         this._runListners();
         localStorage.setItem("projects", JSON.stringify(this._projects));
+    }
+    changeProjectStatus(projectId, newStatus) {
+        const project = this._projects.find((p) => p.id === projectId);
+        if (project && project.status !== newStatus) {
+            project.status = newStatus;
+            this._runListners();
+            localStorage.setItem("projects", JSON.stringify(this._projects));
+            console.log("test");
+        }
     }
     _runListners() {
         for (const listner of this._listners) {
