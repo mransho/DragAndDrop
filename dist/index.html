@@ -21,7 +21,7 @@
       }
 
       ::-webkit-scrollbar-thumb {
-        background: #c1c1c1 ;
+        background: #c1c1c1;
         border-radius: 8px;
         cursor: pointer;
       }
@@ -31,7 +31,7 @@
     <template id="fields">
       <form id="form">
         <div class="form-control">
-          <label for="title">titlex</label>
+          <label for="title">title</label>
           <input id="title" type="text" />
         </div>
         <div class="form-control">
@@ -47,7 +47,10 @@
         <div class="title-header">
           <h2 class="title"></h2>
         </div>
-        <ul class="projects-list" style="min-height: 100%"></ul>
+        <ul
+          class="projects-list"
+          style="display: flex; flex-direction: column-reverse"
+        ></ul>
       </div>
     </template>
 
