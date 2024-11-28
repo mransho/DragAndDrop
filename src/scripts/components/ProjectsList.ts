@@ -41,18 +41,9 @@ export class projectsList extends Base<HTMLDivElement> {
     ) as HTMLDivElement;
     projectsList.innerHTML = "";
     for (const project of projects) {
-      // const content = this._createProjectElement(project);
-      // projectsList.innerHTML += content;
       new Project(`${this._status}-list`, project);
     }
   }
-
-  // private _createProjectElement(project: ProjectRules) {
-  //   const content = `
-  //     <div> ${project.desc}-projects </div>
-  //   `;
-  //   return content;
-  // }
 
   private _filterProjectsStatus(projects: ProjectRules[]) {
     const filterProjects = projects.filter((project: ProjectRules) => {

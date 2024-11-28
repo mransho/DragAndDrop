@@ -33,6 +33,36 @@ export class Project extends Base {
     _runDragging() {
         this.element.addEventListener("dragstart", this._handlDragStart);
         this.element.addEventListener("dragend", this._handlDragEnd);
+        this.element.addEventListener("dragover", this._handleDragOver);
+        this.element.addEventListener("drop", this._handleDrop);
+    }
+    _handleDragOver(e) {
+        e.preventDefault();
+        const target = e.currentTarget;
+        const boundingRect = target.getBoundingClientRect();
+        const offset = e.clientY - boundingRect.top;
+        if (offset < boundingRect.height / 2) {
+        }
+        else {
+        }
+    }
+    _handleDrop(e) {
+        e.preventDefault();
+        const target = e.currentTarget;
+        const draggedId = e.dataTransfer.getData("text/plain");
+        const draggedElement = document.getElementById(draggedId);
+        const boundingRect = target.getBoundingClientRect();
+        const offset = e.clientY - boundingRect.top;
+        if (offset < boundingRect.height / 2) {
+            target.parentElement.insertBefore(draggedElement, target);
+        }
+        else {
+            target.parentElement.insertBefore(draggedElement, target.nextSibling);
+        }
+        this._updateProjectOrder(draggedId, target.id);
+    }
+    _updateProjectOrder(draggedId, targetId) {
+        projectState.reorderProjects(draggedId, targetId);
     }
     _handlDragStart(e) {
         this.element.style.opacity = ".1";
@@ -47,6 +77,12 @@ export class Project extends Base {
 __decorate([
     autoBind
 ], Project.prototype, "_handleDeleteProject", null);
+__decorate([
+    autoBind
+], Project.prototype, "_handleDragOver", null);
+__decorate([
+    autoBind
+], Project.prototype, "_handleDrop", null);
 __decorate([
     autoBind
 ], Project.prototype, "_handlDragStart", null);

@@ -11,20 +11,7 @@
     <script type="module" src="./scripts/index.js"></script>
     <link rel="stylesheet" href="./main.css" />
     <style>
-      ::-webkit-scrollbar {
-        width: 0px;
-        height: 8px;
-      }
-
-      ::-webkit-scrollbar-track {
-        background: transparent;
-      }
-
-      ::-webkit-scrollbar-thumb {
-        background: #c1c1c1;
-        border-radius: 8px;
-        cursor: pointer;
-      }
+      
     </style>
   </head>
   <body>
@@ -49,9 +36,12 @@
         </div>
         <ul
           class="projects-list"
-          style="display: flex; flex-direction: column-reverse"
+          style="display: flex; flex-direction: column-reverse;padding-bottom: 50px; "
         ></ul>
+      </div>
+    </template>
 
+    <template id="project-item">
       <div class="project" draggable="true">
         <h2 class="project_title" id="project_title"></h2>
         <p class="project_desc" id="project_desc"></p>

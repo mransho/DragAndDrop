@@ -54,7 +54,7 @@ class ProjectState {
       project!.status = newStatus;
       this._runListners();
       localStorage.setItem("projects", JSON.stringify(this._projects));
-      console.log("test")
+      console.log("test");
     }
   }
 
@@ -65,6 +65,19 @@ class ProjectState {
   }
   public pushListner(Listner: ListnerType) {
     this._listners.push(Listner);
+  }
+
+  public reorderProjects(draggedId: string, targetId: string): void {
+    const draggedIndex = this._projects.findIndex((p) => p.id === draggedId);
+    const targetIndex = this._projects.findIndex((p) => p.id === targetId);
+
+    if (draggedIndex !== -1 && targetIndex !== -1) {
+      const [draggedProject] = this._projects.splice(draggedIndex, 1);
+      this._projects.splice(targetIndex, 0, draggedProject);
+
+      this._runListners();
+      localStorage.setItem("projects", JSON.stringify(this._projects));
+    }
   }
 }
 export const projectState = ProjectState.getInstance();
